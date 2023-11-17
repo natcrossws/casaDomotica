@@ -1,21 +1,28 @@
-const express = require('express');
-const path = require('path');
-const morgan = require('morgan');
+const express = require('express'); // librería de express
+const { engine } = require('express-handlebars'); // Facilita la creación de plantillas HTML dinámicas
 const dbConnection = require('pg-promise')();
-//const johnnyFive = require('johnny-five');
+const session = require('express-session');
+const bodyParser = require('body-parser');
+const morgan = require('morgan');
+
+const loginRoutes = require('./routes/login');
+
+const path = require('path');
+const johnnyFive = require('johnny-five');
 
 const app = express();
+app.set('port', 3000);
 
-//importar rutas
-const customerRoutes = require('./routes/customer');
+app.set('views', __dirname+'/views');
+app.engine('.hbs', engine({
+    extname: '.hbs',
+}));
+app.set('view engine', 'hbs');
 
-//Configuración de express
-app.set('port', process.env.PORT || 3000);
-app.set('view engine', 'ejs');
-app.set('views', path.join(__dirname, 'views'));
-
-//middlewares
-app.use(morgan('dev'));
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
+app.use(bodyParser.json());
 
 //Conexion a la bd
 const db = dbConnection({
@@ -26,11 +33,15 @@ const db = dbConnection({
     database: 'casaDomoticadb'
 });
 
+app.use('/', loginRoutes);
 
-//rutas
-app.listen(app.get('port'), () => {
-    console.log('Server connection success');
+// Ruta inicial
+app.get('/', (req, res) => {
+    res.render('home');
 });
 
-app.use('/', customerRoutes);
-app.use(express.static(path.join(__dirname, 'assets')));
+
+
+
+
+
