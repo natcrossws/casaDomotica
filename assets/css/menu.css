@@ -1,0 +1,36 @@
+body{
+    background-color: #f3eeeb;
+}
+h3{
+    color: #676563;
+    font-family: 'Poppins', sans-serif;
+}
+.title-line{
+    margin-left: 50px;
+    margin-right: 50px;
+}
+.user{
+    color: #676563;
+    font-family: 'Poppins', sans-serif;
+    font-size: 15px;
+    font-weight: 200;
+}
+.card-principal{
+    width: 827px;
+    border-radius: 15px;
+    margin-left: 56px;
+}
+.foco-img{
+    width: 70px;
+    height: 70px;
+    margin-left: 27px;
+}
+.card-sec{
+    border-radius: 15px;
+}
+.btn-primary {
+    color: #fff;
+    background-color: #8da4c7;
+    border-color: #8da4c7;
+    width: 101px;
+}

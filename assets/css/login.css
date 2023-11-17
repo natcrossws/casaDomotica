@@ -1,0 +1,20 @@
+.card{
+    box-shadow: 13px 12px 11px -9px #898a8b;;
+    width: 457px;
+    height: 457px;
+    margin-top: 73px;
+    border-radius: 8%;
+}
+.logo-ucad{
+    width: 65%;
+}
+.img-background{
+    background-image: url('../imgs/login.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+}
+.btn-primary{
+    background-color: #009ca7;
+    border-color: #009ca7;
+}
