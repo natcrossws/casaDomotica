@@ -1,0 +1,9 @@
+/* .maincontent{
+    padding-left: 50%;
+    padding-right: 50%;
+} */
+.card{
+    width: 45rem;
+    border-radius: 7px 7px 7px 7px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}

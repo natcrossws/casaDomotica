@@ -1,54 +1,46 @@
-//declaración de vriables que incluyen las libererías 
-const express = require('express'); // librería de express
-const dbConnection = require('pg-promise')();// librería ue facilita las consultas con postgres
+const express = require('express'); 
 const session = require('express-session');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
-const johnnyFive = require('johnny-five');// Librería que deja interactuar con arduino
-
-//declaración de variables para incluir las rutas
-const rutaDeLogin = require('./routes/loginRoutes');
-
-//incluir de rutas de controladores
 const loginController = require('./controllers/loginController');
-
+//servidor
 const app = express();
 app.set('port', 3000);
-
-// Rutas
-app.set('views', 'src/views');
-app.get('/login', loginController.login);
-app.get('/menuhome', (req, res) => {
-    res.sendFile(__dirname + '/../src/views/menuhome.html');    
+app.listen(app.get('port'), () => {
+    console.log('Listening on port ', app.get('port'));
 });
 
+//rutas de back
+// const rutaDeLogin = require('./routes/loginRoutes');
 app.use(bodyParser.urlencoded({
     extended: true
 }));
 app.use(bodyParser.json());
 
+
+app.use(session({
+    secret: 'domotichouse', // Una cadena secreta para firmar la cookie de sesión
+    resave: false,
+    saveUninitialized: true,
+}));
+
+// rutas de front
+app.set('views', 'src/views');
+app.get('/login', loginController.login);
+app.post('/ingresar', loginController.ingresar);
+app.get('/registro', loginController.vistaRegistro);
+app.post('/registrarUsuarios', loginController.registrarUsuarios)
+app.get('/mostrar-usuario', (req, res) => {
+    const usuario = req.session.usuario || 'Usuario no encontrado';
+    res.json({ usuario });
+});
+
+
+
 // Rutas estáticas
 app.use(express.static('src/public'));
 app.use(express.static('src'));
 
-
-//Conexion a la bd
-const db = dbConnection({
-    host: 'localhost',
-    user: 'postgres',
-    password: '83505',
-    port: 5433,
-    database: 'casaDomoticadb'
-});
-
-// Ruta para recibir datos del ESP8266
-app.post('/datosDesdeArduino', (req, res) => {
-    const datos = req.body; // Datos recibidos desde el ESP8266
-    console.log('Datos recibidos desde Arduino:', datos);
-
-    // Realiza la lógica necesaria con los datos recibidos
-    res.send('Datos recibidos correctamente');
-});
 
 // app.use(session({
 //     secret: 'secret',
@@ -56,9 +48,7 @@ app.post('/datosDesdeArduino', (req, res) => {
 //     saveUninitialized: true
 // }));
 
-app.listen(app.get('port'), () => {
-    console.log('Listening on port ', app.get('port'));
-});
+
 
 
 

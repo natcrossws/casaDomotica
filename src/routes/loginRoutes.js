@@ -1,10 +1,10 @@
-const express = require('express');
-const router = express.Router();
-const loginController = require('../controllers/loginController');
+// const express = require('express');
+// const router = express.Router();
+// const loginController = require('../controllers/loginController');
 
-router.get('/login.html', loginController.login);
-router.get('/menuhome.html', (req, res) => {
-    res.sendFile(__dirname + '/../src/views/menuhome.html');
-});
+// router.get('login.html', loginController.login);
+// router.get('menuhome.html', loginController.menu);
+// router.get('usrsysReg.html', loginController.registrarVista);
 
-module.exports = router;
+// module.exports = router;
+

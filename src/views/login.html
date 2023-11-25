@@ -24,13 +24,14 @@
                     </div>
                     <h4 class="card-title mt-4 text-center">¡Bienvenido a tu casa domótica!</h4>
 
-                    <form action="" method="POST">
+                    <form id="login-form" action="/ingresar" method="POST">
                         <div class="row d-flex justify-content-center mt-5">
                             <div class="col-md-2">
                                 <img src="/imgs/usuario-icon.png" alt="">
                             </div>
-                            <div class="col-md-10 mt-2">
-                                <input type="email" class="form-control" id="mail" aria-describedby="emailHelp" placeholder="Ingresa tu correo institucional">
+                            <div class="col-md-10">
+                                <label for="email">Correo electrónico</label>
+                                <input type="email" class="form-control" name="mail" id="mail" aria-describedby="emailHelp" placeholder="Ingresa tu correo institucional">
                             </div>
                         </div>
                         <div class="row d-flex justify-content-center mt-3">
@@ -38,15 +39,18 @@
                                 <img src="/imgs/bloquear.png" alt="">
                             </div>
                             <div class="col-md-10 mt-2">
-                                <input type="password" class="form-control" id="paasw" placeholder="Ingresa contraseña">
+                                <label for="password">Contraseña</label>
+                                <input type="password" class="form-control" name="paasw" id="paasw" placeholder="Ingresa contraseña">
                             </div>
-                        </div>
-                    </form>
+                        </div>                    
                     <div class="row d-flex justify-content-center text-center mt-3">
                         <div class="col-md-12">
-                            <a class="btn btn-primary" href="./menuhome.html">Ingresar</a>
+                            <!-- <a  href="/menu"></a> -->
+                            <button type="submit" class="btn btn-primary">Ingresar</button>
                         </div>
                     </div>
+                    </form>
+
                 </div>
             </div>
         </div>
