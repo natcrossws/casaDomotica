@@ -2,7 +2,8 @@ const express = require('express');
 const session = require('express-session');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
-const loginController = require('./controllers/loginController');
+
+
 //servidor
 const app = express();
 app.set('port', 3000);
@@ -10,8 +11,23 @@ app.listen(app.get('port'), () => {
     console.log('Listening on port ', app.get('port'));
 });
 
+// Configuración de arduino
+const mqtt = require('mqtt');
+const { Board, Led } = require('johnny-five');
+
+const board = new Board();
+const client = mqtt.connect('mqtt://<IP_DEL_ESP32_COMPUTADORA>');
+
+client.on('connect', () => {
+    console.log('Conectado al servidor MQTT');
+});
+
+
+
+
 //rutas de back
 // const rutaDeLogin = require('./routes/loginRoutes');
+const loginController = require('./controllers/loginController');
 app.use(bodyParser.urlencoded({
     extended: true
 }));
@@ -29,7 +45,11 @@ app.set('views', 'src/views');
 app.get('/login', loginController.login);
 app.post('/ingresar', loginController.ingresar);
 app.get('/registro', loginController.vistaRegistro);
-app.post('/registrarUsuarios', loginController.registrarUsuarios)
+app.post('/registrarUsuarios', loginController.registrarUsuarios);
+
+
+
+
 app.get('/mostrar-usuario', (req, res) => {
     const usuario = req.session.usuario || 'Usuario no encontrado';
     res.json({ usuario });
