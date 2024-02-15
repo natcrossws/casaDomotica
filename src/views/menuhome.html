@@ -11,13 +11,7 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200&family=Poppins&display=swap" rel="stylesheet">
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/ScrollMagic.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/plugins/debug.addIndicators.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.0.4/gsap.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.0.4/EaselPlugin.min.js.map"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/plugins/animation.gsap.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/TweenMax.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.0.4/ScrollToPlugin.min.js"></script>    
+        <script src="js/controlBotones.js"></script>
     </head>
     <body>
         <div class="row d-flex justify-content-center text-center mt-5">
@@ -48,7 +42,7 @@
                                 <div class="card-body">
                                     <div class="row d-flex justify-content-center text-center">
                                         <h6>Sala</h6>
-                                        <button class="btn btn-primary text-center">Encender</button>
+                                        <button id="btn-sala" class="btn btn-primary text-center" onclick="encenderSala()">Encender</button>
                                     </div>
                                 </div>
                             </div>
@@ -58,7 +52,7 @@
                                 <div class="card-body">
                                     <div class="row d-flex justify-content-center text-center">
                                         <h6>Cocina</h6>
-                                        <button class="btn btn-primary text-center">Encender</button>
+                                        <button id="btn-cocina" class="btn btn-primary text-center">Encender</button>
                                     </div>
                                 </div>
                             </div>
@@ -68,7 +62,7 @@
                                 <div class="card-body">
                                     <div class="row d-flex justify-content-center text-center">
                                         <h6>Dormitorio</h6>
-                                        <button class="btn btn-primary text-center">Encender</button>
+                                        <button id="btn-dormitorio" class="btn btn-primary text-center">Encender</button>
                                     </div>
                                 </div>
                             </div>
@@ -78,7 +72,7 @@
                                 <div class="card-body">
                                     <div class="row d-flex justify-content-center text-center">
                                         <h6>Baño</h6>
-                                        <button class="btn btn-primary text-center">Enceder</button>
+                                        <button id="btn-baño" class="btn btn-primary text-center">Enceder</button>
                                     </div>
                                 </div>
                             </div>
@@ -141,6 +135,13 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+        <div class="row d-flex justify-content-center text-center">
+            <div class="col-md-12">
+                <a href="" id="logOut">
+                    <i class="fa-solid fa-right-from-bracket"></i><div class="logOut mb-5">Salir</div>
+                </a>                
             </div>
         </div>
     </body>
